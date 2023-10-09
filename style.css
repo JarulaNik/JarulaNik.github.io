@@ -114,3 +114,9 @@ footer {
   height: 150px;
   border: 1px solid #ccc;
 }
+.header {
+  background-image: url('https://ibb.co/92s7bfS');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
