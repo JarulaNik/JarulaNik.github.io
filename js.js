@@ -1,6 +1,5 @@
 const button = document.querySelector('button');
 
-/* Тут на кнопку навешиваем обрабочик, который ждёт клика и тогда запустит логику */
 button.addEventListener('click', function() {
-	alert("Кто кликнул - тот молодец 😉")
-})
+  window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+});
