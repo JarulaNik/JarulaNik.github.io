@@ -7,7 +7,12 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+{
+  background-image: url('fon.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 .header {
   margin: 40px 0;
 }
