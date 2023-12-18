@@ -6,13 +6,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-{
   background-image: url('fon.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
+
 .header {
   margin: 40px 0;
 }
@@ -97,6 +96,7 @@ body {
 footer {
   margin: 0 0 40px 0;
 }
+
 .button-link {
   box-sizing: border-box;
   display: flex;
@@ -107,16 +107,14 @@ footer {
   width: 320px;
   background: #fb9d19;
   border-radius: 20px;
-
   font-size: 14px;
   line-height: 1.4;
-
   color: #ffffff;
   text-decoration: none;
 }
+
 .header__avatar {
   width: 100px;
   height: 100px;
   border: 1px solid #ccc;
 }
-
