@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +29,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>Интерактивная страница с БД</h1>
   <p id="text">Нажми на кнопку, чтобы изменить цвет текста!</p>
@@ -38,7 +40,13 @@
     const textElement = document.getElementById('text');
     const colorChanger = document.getElementById('colorChanger');
 
-    
+    window.addEventListener('popstate', () => {
+      const storedColor = localStorage.getItem('textColor');
+      if (storedColor) {
+        textElement.style.color = storedColor;
+      }
+    });
+
     const storedColor = localStorage.getItem('textColor');
     if (storedColor) {
       textElement.style.color = storedColor;
@@ -47,10 +55,12 @@
     colorChanger.addEventListener('click', () => {
       const randomColor = getRandomColor();
 
-      
       localStorage.setItem('textColor', randomColor);
 
       textElement.style.color = randomColor;
+
+      
+      history.pushState(null, null, '/');
     });
 
     function getRandomColor() {
@@ -63,4 +73,5 @@
     }
   </script>
 </body>
+
 </html>
