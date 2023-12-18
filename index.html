@@ -72,13 +72,68 @@
   </main>
 
   <footer>
-    <button type="button" class="button-link">Нажми меня</button>
+    <button type="button" class="button-link" onclick="changeContent('main')">Нажми меня</button>
     <div style="margin-top: 10px;"></div>
-    <a href="page1.html" class="button-link">Первая страница</a>
+    <a href="page1" class="button-link" onclick="changeContent('page1')">Первая страница</a>
     <div style="margin-top: 10px;"></div>
-    <a href="page2.html" class="button-link">Вторая страница</a>
+    <a href="page2" class="button-link" onclick="changeContent('page2')">Вторая страница</a>
   </footer>
   <script type="text/javascript" src="js.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Обработка изменения URL
+      window.addEventListener('popstate', () => {
+        navigate(window.location.pathname);
+      });
+
+      // Начальная навигация
+      navigate(window.location.pathname);
+    });
+
+    function navigate(path) {
+      const contentElement = document.getElementById('content');
+
+      // Определение, какую страницу загружать
+      switch (path) {
+        case '/':
+          loadContent('main.html');
+          break;
+        case '/page1':
+          loadContent('page1.html');
+          break;
+        case '/page2':
+          loadContent('page2.html');
+          break;
+        default:
+          // Страница не найдена
+          loadContent('404.html');
+      }
+    }
+
+    function loadContent(page) {
+      fetch(page)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(html => {
+          const contentElement = document.getElementById('content');
+          contentElement.innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Error during fetch:', error);
+        });
+    }
+
+    function changeContent(page) {
+      // Изменение URL без перезагрузки страницы
+      history.pushState(null, null, page);
+      // Загрузка контента новой страницы
+      navigate(page);
+    }
+  </script>
 </body>
 
 </html>
