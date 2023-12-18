@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #f0f0f0; /* Цвет фона */
-      transition: background-color 0.5s ease; /* Плавный переход цвета фона */
+      background-color: #f0f0f0;
+      transition: background-color 0.5s ease;
     }
 
     h1, p {
@@ -25,7 +26,7 @@
       margin-top: 20px;
       cursor: pointer;
       padding: 10px;
-      background-color: #4CAF50; /* Зеленый цвет кнопки */
+      background-color: #4CAF50;
       color: white;
       border: none;
       border-radius: 5px;
@@ -33,10 +34,11 @@
     }
   </style>
 </head>
+
 <body>
   <h1>Страница 1</h1>
   <p>Эта страница находится в разработке.</p>
-  
+
   <button id="slider">Нажми для изменения фона</button>
 
   <script>
@@ -44,13 +46,23 @@
     const slider = document.getElementById('slider');
     let darkMode = false;
 
-    slider.addEventListener('click', function() {
-      // Переключаемся между темным и светлым режимом
+    slider.addEventListener('click', function () {
       darkMode = !darkMode;
-
-      // Устанавливаем цвет фона в зависимости от режима
       body.style.backgroundColor = darkMode ? '#333' : '#f0f0f0';
+
+
+      const newUrl = darkMode ? '/page1/dark' : '/page1';
+      history.pushState({ darkMode }, null, newUrl);
+    });
+
+
+    window.addEventListener('popstate', function (event) {
+      if (event.state) {
+        darkMode = event.state.darkMode;
+        body.style.backgroundColor = darkMode ? '#333' : '#f0f0f0';
+      }
     });
   </script>
 </body>
+
 </html>
