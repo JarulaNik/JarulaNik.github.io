@@ -3,10 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Страница 2</title>
+  <title>Интерактивная страница</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #333;
+    }
+
+    #colorChanger {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Страница 2</h1>
-  <p>Эта страница находится в разработке.</p>
+  <h1>Интерактивная страница</h1>
+  <p id="text">Нажми на кнопку, чтобы изменить цвет текста!</p>
+  
+  <button id="colorChanger">Изменить цвет</button>
+
+  <script>
+    const textElement = document.getElementById('text');
+    const colorChanger = document.getElementById('colorChanger');
+
+    colorChanger.addEventListener('click', () => {
+      const randomColor = getRandomColor();
+      textElement.style.color = randomColor;
+    });
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
 </body>
 </html>
