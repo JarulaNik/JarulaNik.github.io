@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Интерактивная страница</title>
+  <title>Интерактивная страница с БД</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
 
     #colorChanger {
       padding: 10px;
-      background-color: #4CAF50;
+      background-color: #4CAF50; /* Зеленый цвет кнопки */
       color: white;
       border: none;
       border-radius: 5px;
@@ -29,7 +29,7 @@
   </style>
 </head>
 <body>
-  <h1>Интерактивная страница</h1>
+  <h1>Интерактивная страница с БД</h1>
   <p id="text">Нажми на кнопку, чтобы изменить цвет текста!</p>
   
   <button id="colorChanger">Изменить цвет</button>
@@ -38,8 +38,18 @@
     const textElement = document.getElementById('text');
     const colorChanger = document.getElementById('colorChanger');
 
+    // Загрузка цвета из локального хранилища при загрузке страницы
+    const storedColor = localStorage.getItem('textColor');
+    if (storedColor) {
+      textElement.style.color = storedColor;
+    }
+
     colorChanger.addEventListener('click', () => {
       const randomColor = getRandomColor();
+
+      // Сохранение цвета в локальное хранилище
+      localStorage.setItem('textColor', randomColor);
+
       textElement.style.color = randomColor;
     });
 
