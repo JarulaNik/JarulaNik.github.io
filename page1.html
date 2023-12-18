@@ -4,9 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Страница 1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0; /* Цвет фона */
+      transition: background-color 0.5s ease; /* Плавный переход цвета фона */
+    }
+
+    h1, p {
+      margin: 0;
+    }
+
+    #slider {
+      margin-top: 20px;
+      cursor: pointer;
+      padding: 10px;
+      background-color: #4CAF50; /* Зеленый цвет кнопки */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+    }
+  </style>
 </head>
 <body>
   <h1>Страница 1</h1>
   <p>Эта страница находится в разработке.</p>
+  
+  <button id="slider">Нажми для изменения фона</button>
+
+  <script>
+    const body = document.body;
+    const slider = document.getElementById('slider');
+    let darkMode = false;
+
+    slider.addEventListener('click', function() {
+      // Переключаемся между темным и светлым режимом
+      darkMode = !darkMode;
+
+      // Устанавливаем цвет фона в зависимости от режима
+      body.style.backgroundColor = darkMode ? '#333' : '#f0f0f0';
+    });
+  </script>
 </body>
 </html>
