@@ -40,17 +40,20 @@
     const textElement = document.getElementById('text');
     const colorChanger = document.getElementById('colorChanger');
 
-    window.addEventListener('popstate', () => {
+    window.addEventListener('load', () => {
       const storedColor = localStorage.getItem('textColor');
       if (storedColor) {
         textElement.style.color = storedColor;
       }
     });
 
-    const storedColor = localStorage.getItem('textColor');
-    if (storedColor) {
-      textElement.style.color = storedColor;
-    }
+
+    window.addEventListener('popstate', () => {
+      const storedColor = localStorage.getItem('textColor');
+      if (storedColor) {
+        textElement.style.color = storedColor;
+      }
+    });
 
     colorChanger.addEventListener('click', () => {
       const randomColor = getRandomColor();
@@ -59,7 +62,7 @@
 
       textElement.style.color = randomColor;
 
-      
+     
       history.pushState(null, null, '/');
     });
 
