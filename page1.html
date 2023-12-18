@@ -52,7 +52,12 @@
 
 
       const newUrl = darkMode ? '/page1/dark' : '/page1';
-      history.pushState({ darkMode }, null, newUrl);
+      const state = { darkMode };
+      if (history.state && history.state.darkMode !== undefined) {
+        history.replaceState(state, null, newUrl);
+      } else {
+        history.pushState(state, null, newUrl);
+      }
     });
 
 
